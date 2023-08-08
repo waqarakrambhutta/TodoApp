@@ -1,17 +1,16 @@
-import { useState } from 'react'
 
 import './App.css'
+import NavBar from './components/NavBar'
 
 function App() {
-  const [count,setcount] = useState(false)
 
   return (
 
-    <div>my name is waqar
-      
-    </div >
+    <>
+    <NavBar/>
+    </>
 
-    
+
   )
 
 };

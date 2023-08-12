@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface Task {
+export interface Task {
   task_name: string;
   task_description: string;
 }
@@ -24,12 +24,13 @@ const TasksCard = () => {
     <>
     {error && <p className="text-danger">{error}</p>}
     <div
-      className="card col-md-6"
-      style={{ maxWidth: "100%", margin: "0px 10px 0px 10px" }}
+      className="card col-md-6 mb-3"
+      style={{ maxWidth: "100%" }}
+      
     >
       <div
         className="card-body custom-scrollbar"
-        style={{ maxHeight: "400px", overflowY: "scroll" }}
+        style={{ height: "400px", overflowY: "scroll" }}
       >
         <ul className="list-group" >
           {task.map((e) => (

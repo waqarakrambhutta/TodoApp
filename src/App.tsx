@@ -1,5 +1,6 @@
 import './App.css'
 import NavBar from './components/NavBar'
+import ShowTasksCard from './components/ShowTasksCard'
 import TasksCard from './components/TasksCard'
 
 function App() {
@@ -11,15 +12,17 @@ function App() {
   // ]
 
   return (
-
     <>
     <NavBar/>
-    <TasksCard/>
+    <div
+          className="container-fluid d-flex justify-content-between align-items-center gap-2"
+          style={{ width: "100%"}}
+        >
+          <TasksCard />
+          <ShowTasksCard />
+    </div>
     </>
-
-
   )
-
 };
 
 export default App

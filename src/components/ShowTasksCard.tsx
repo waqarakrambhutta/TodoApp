@@ -1,10 +1,13 @@
+import { Task } from "../App";
 
+interface outputSectionProp{
+  selectedTask: Task |null;
+}
 
+const ShowTasksCard = ({selectedTask}:outputSectionProp) => {
 
-const ShowTasksCard = () => {
-
-    const onetask = 
-        {task_name:'Bhangra',task_description:'I will learn bhangra, and perform it in the QAU'}
+    // const onetask = 
+    //     {task_name:'Bhangra',task_description:'I will learn bhangra, and perform it in the QAU'}
 
 
   return (
@@ -16,8 +19,13 @@ const ShowTasksCard = () => {
         className="card-body custom-scrollbar"
         style={{height: "400px", overflowY: "scroll" }}
       >
-        <h4>{onetask.task_name}</h4>
-        <p>{onetask.task_description}</p>
+        {selectedTask ?  (<div>
+          <h4>{selectedTask.task_name}</h4>
+          <p>{selectedTask.task_description}</p>
+        </div>  )      
+      : (
+        <p>Select the task.</p>
+      )}
         
       </div>
     </div>

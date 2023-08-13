@@ -1,7 +1,16 @@
 import { MdDelete } from "react-icons/md";
 import { GrAdd, GrUpdate } from "react-icons/gr";
+import AddTask from "./AddTask";
+import { useState } from "react";
+import { Task } from "../App";
 
 const NavBar = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const handleAddTask = (task: Task) => {
+    setTasks([...tasks, task]); 
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary mb-3">
@@ -11,9 +20,10 @@ const NavBar = () => {
         >
           <h2>Todo List</h2>
           <div className="d-flex gap-2">
-            <button type="button" className="btn btn-outline-dark">
+            {/* <button type="button" className="btn btn-outline-dark">
               <GrAdd />
-            </button>
+            </button> */}
+            <AddTask onAddTask={handleAddTask}/>
             <button type="button" className="btn btn-outline-dark">
               <GrUpdate />
             </button>

@@ -19,7 +19,7 @@ const TasksCard = () => {
     .then(response=>setTask(response.data))
     .catch(err=>setError(err))
 
-  })
+  },[])
   return (
     <>
     {error && <p className="text-danger">{error}</p>}
@@ -34,7 +34,7 @@ const TasksCard = () => {
       >
         <ul className="list-group" >
           {task.map((e) => (
-            <li className="list-group-item" key={e.task_name}>{e.task_name}</li>
+            <li className="list-group-item" onClick={ei=> console.log(e.task_name)} key={e.task_name}>{e.task_name}</li>
           ))}
         </ul>
       </div>

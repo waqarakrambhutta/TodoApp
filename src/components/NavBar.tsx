@@ -4,7 +4,7 @@ import { GrAdd, GrUpdate } from "react-icons/gr";
 const NavBar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary mb-3">
         <div
           className="container-fluid d-flex justify-content-between align-items-center"
           style={{ width: "100%" }}

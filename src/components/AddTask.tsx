@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Task } from "../App";
-import { GrAdd } from "react-icons/gr";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export interface AddTaskFormProp {
   onAddTask: (task: Task) => void;
@@ -9,61 +9,78 @@ export interface AddTaskFormProp {
 
 const AddTask = ({ onAddTask }: AddTaskFormProp) => {
   const [showForm, setShowForm] = useState(false);
-  const [error, setError] = useState("");
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/task/', data); 
+      if (response.status === 201) {
+        onAddTask(data);
+        reset();
+        setShowForm(false); 
+      } else {
+        throw new Error('Failed to add task. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <div>
+    <div className="add-task-form">
       {!showForm ? (
         <button
-          type="button"
-          className="btn btn-outline-dark"
+          className="btn btn-primary"
           onClick={() => setShowForm(true)}
         >
-          <GrAdd />
+          Add Task
         </button>
       ) : (
-        <form>
-          <div className="mb-3">
-            <label className="form-label">Task Name:</label>
-            <input
-              className={`form-control ${errors.task_name ? "is-invalid" : ""}`}
-              {...register("task_name", { required: true })}
-            />
-            {errors.task_name && (
-              <div className="invalid-feedback">Task name is required</div>
-            )}
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Add Task</h5>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="mb-3">
+                <label className="form-label">Task Name:</label>
+                <input
+                  className={`form-control ${errors.task_name ? 'is-invalid' : ''}`}
+                  {...register('task_name', { required: true })}
+                />
+                {errors.task_name && (
+                  <div className="invalid-feedback">Task name is required.</div>
+                )}
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Task Description:</label>
+                <textarea
+                  className={`form-control ${errors.task_description ? 'is-invalid' : ''}`}
+                  {...register('task_description', { required: true })}
+                />
+                {errors.task_description && (
+                  <div className="invalid-feedback">Task description is required.</div>
+                )}
+              </div>
+              <button type="submit" className="btn btn-outline-dark me-2">Add Task</button>
+              <button
+                type="button"
+                className="btn btn-outline-dark"
+                onClick={() => {
+                  setShowForm(false);
+                  reset();
+                }}
+              >
+                Cancel
+              </button>
+            </form>
           </div>
-          <div className="mb-3">
-            <label className="form-label">Task Name:</label>
-            <textarea
-              className={`form-control ${
-                errors.task_description ? "is-invalid" : ""
-              }`}
-              {...register("task_description", { required: true })}
-            />
-            {errors.task_name && (
-              <div className="invalid-feedback">Task name is required</div>
-            )}
-          </div>
-          <button type="submit" className="btn btn-success me-2">
-            Add Task
-          </button>
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={() => {
-              setShowForm(false);
-              reset();
-            }}
-          >
-            Cancel
-          </button>
-        </form>
+        </div>
       )}
     </div>
   );

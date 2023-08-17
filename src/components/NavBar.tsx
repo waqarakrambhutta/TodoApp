@@ -1,5 +1,5 @@
 import { MdDelete } from "react-icons/md";
-import { GrAdd, GrUpdate } from "react-icons/gr";
+import { GrUpdate } from "react-icons/gr";
 import AddTask from "./AddTask";
 import { useState } from "react";
 import { Task } from "../App";

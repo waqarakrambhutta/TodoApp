@@ -30,7 +30,7 @@ function App() {
     .then(response=>setTasks(response.data))
     .catch(err=>setError(err))
 
-  },[])
+  },[tasks])
 
   const handleTaskClick = (task:Task) =>{
     setSelectedTask(task);

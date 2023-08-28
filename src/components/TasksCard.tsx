@@ -5,6 +5,7 @@ import { Task } from "../App";
 //   task_description: string;
 // }
 
+
 interface TaskListProp {
   tasks: Task[];
   onTaskClick: (task:Task)=>void;

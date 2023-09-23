@@ -18,15 +18,17 @@ export default function Home() {
         TODO LIST
       </h1>
       <Form addTask={addTask} />
-      <Container>
-        {tasks.map((task, index) => (
-          <Item
-            key={index}
-            className="text-slate-600 hover:text-slate-800"
-            task={task}
-          />
-        ))}
-      </Container>
+      {tasks && (
+        <Container>
+          {tasks.map((task, index) => (
+            <Item
+              key={index}
+              className="text-slate-600 hover:text-slate-800"
+              task={task}
+            />
+          ))}
+        </Container>
+      )}
     </main>
   );
 }

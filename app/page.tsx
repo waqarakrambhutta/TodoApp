@@ -1,14 +1,31 @@
+"use client";
+
+import React, { useState } from "react";
 import Container from "@/components/Container";
-import Item from "@/components/Item";
+import Item from "@/components/Item"; // Import Item component individually
+import Form from "@/components/Form"; // Import Form component
 
 export default function Home() {
+  const [tasks, setTasks] = useState<string[]>([]); // Initialize tasks as an array
+
+  const addTask = (newTask: string) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]); // Add a new task to the tasks array
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start p-24 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-fixed bg-center">
-      <h1 className="text-3xl font-serif font-extrabold text-white">
+    <main className="flex min-h-screen flex-col items-center justify-start pt-24 px-5 bg-[url('https://wallpapercave.com/wp/wp10054802.jpg')] bg-cover bg-fixed bg-center">
+      <h1 className="sm:text-5xl text-3xl text-slate-600 mb-3 sm:mb-5 font-serif font-extrabold">
         TODO LIST
       </h1>
-      <Container className="">
-        <Item className="text-zinc-300 hover:text-white" />
+      <Form addTask={addTask} />
+      <Container>
+        {tasks.map((task, index) => (
+          <Item
+            key={index}
+            className="text-slate-600 hover:text-slate-800"
+            task={task}
+          />
+        ))}
       </Container>
     </main>
   );

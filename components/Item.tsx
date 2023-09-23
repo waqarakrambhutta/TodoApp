@@ -5,7 +5,7 @@ interface Items {
 }
 
 const Item: React.FC<Items> = ({ className }: Items) => {
-  return <div className={` ${className}`}>Item</div>;
+  return <div className={`p-6 ${className}`}>Item</div>;
 };
 
 export default Item;

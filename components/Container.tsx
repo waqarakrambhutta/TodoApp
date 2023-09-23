@@ -10,7 +10,7 @@ const Container: React.FC<ContainerProps> = ({
 }: ContainerProps) => {
   return (
     <div
-      className={`w-[60%] sm:w-[95%] bg-transparent backdrop-blur-sm rounded-lg shadow-sm shadow-slate-400/10 ${className}`}
+      className={`w-[60%] min-h-[60vh] sm:w-[95%] bg-transparent backdrop-blur-md p-6 rounded-lg shadow-md shadow-white/30 ${className}`}
     >
       {children}
     </div>

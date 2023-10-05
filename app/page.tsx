@@ -20,13 +20,16 @@ export default function Home() {
       <Form addTask={addTask} />
       {tasks && (
         <Container>
-          {tasks.map((task, index) => (
-            <Item
-              key={index}
-              className="text-slate-600 hover:text-slate-800"
-              task={task}
-            />
-          ))}
+          {tasks.map(
+            (task, index) =>
+              task && (
+                <Item
+                  key={index}
+                  className="text-slate-600 hover:text-slate-800"
+                  task={task}
+                />
+              )
+          )}
         </Container>
       )}
     </main>

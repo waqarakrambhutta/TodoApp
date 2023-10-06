@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 interface ItemProps {
   className?: string;
@@ -6,11 +7,29 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ className, task }) => {
+  const [checked, setChecked] = useState<boolean>(false);
+
+  const toggleCheck = () => {
+    setChecked(!checked);
+  };
+
   return (
     <div
-      className={`px-6 rounded-lg shadow-md hover:shadow-lg py-2 border my-1 ${className}`}
+      className={`px-6 flex justify-between rounded-lg shadow-md hover:shadow-lg py-2 border my-1 ${className}`}
     >
-      {task}
+      {checked ? (
+        <div className="text-green-800 line-through">{task}</div>
+      ) : (
+        <div>{task}</div>
+      )}
+      <div>
+        <input
+          className="accent-neutral-500"
+          type="checkbox"
+          checked={checked}
+          onChange={toggleCheck}
+        />
+      </div>
     </div>
   );
 };

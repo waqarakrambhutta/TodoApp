@@ -12,6 +12,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'bg-hero': 'url("https://static.vecteezy.com/system/resources/thumbnails/001/624/835/original/abstract-technology-background-free-video.jpg")',
       },
     },
   },

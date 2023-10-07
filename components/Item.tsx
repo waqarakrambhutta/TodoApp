@@ -18,7 +18,7 @@ const Item: React.FC<ItemProps> = ({ className, task }) => {
       className={`px-6 flex justify-between rounded-lg shadow-md hover:shadow-lg py-2 border my-1 ${className}`}
     >
       {checked ? (
-        <div className="text-green-800 line-through">{task}</div>
+        <div className="text-green-300 line-through">{task}</div>
       ) : (
         <div>{task}</div>
       )}

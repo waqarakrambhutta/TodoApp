@@ -13,7 +13,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start pt-24 px-5 bg-bg-hero bg-cover bg-fixed bg-center">
+    <main className="flex min-h-screen flex-col items-center justify-start pt-24 px-5 bg-slate-700">
       <h1 className="sm:text-5xl text-3xl text-white mb-3 sm:mb-5 font-serif font-extrabold">
         TODO LIST
       </h1>
